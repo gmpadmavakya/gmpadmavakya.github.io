@@ -154,7 +154,7 @@
 
   .row {
     display: grid;
-    grid-template-columns: 3px 5.5ch 1fr auto auto auto;
+    grid-template-columns: 3px 5.5ch 1fr auto auto;
     gap: 0 1rem;
     align-items: center;
     background: var(--card);
@@ -258,7 +258,7 @@
     .row {
       grid-template-columns: 3px 1fr auto;
       grid-template-areas:
-        "tab num status"
+        "tab num num"
         "tab title title"
         "tab meta action";
       row-gap: 0.35rem;
@@ -266,7 +266,6 @@
     }
     .tab { grid-area: tab; }
     .num { grid-area: num; }
-    .status { grid-area: status; }
     .title { grid-area: title; }
     .meta { grid-area: meta; text-align: left; }
     .action { grid-area: action; justify-self: end; }
@@ -276,18 +275,51 @@
   @media (prefers-reduced-motion: reduce) {
     * { transition: none !important; }
   }
+
+  .topnav {
+    display: flex;
+    justify-content: center;
+    gap: 0.6rem;
+    padding: 0.9rem 1.5rem 0;
+    position: relative;
+  }
+  .topnav a {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.74rem;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: #C9C2B2;
+    border: 1.5px solid rgba(201,194,178,0.35);
+    padding: 0.4rem 0.9rem;
+    border-radius: 999px;
+    transition: all 0.15s ease;
+  }
+  .topnav a:hover {
+    border-color: var(--gold);
+    color: var(--paper);
+  }
+  .topnav a.active {
+    background: var(--gold);
+    border-color: var(--gold);
+    color: var(--ink);
+  }
 </style>
 </head>
 <body>
 
 <header>
+  <nav class="topnav">
+  <a href="/">Home</a>
+  <a href="/five-star-series/" class="active">Five Star Series</a>
+</nav>
   <p class="eyebrow">His Holiness Radhanath Swami Lecture Transcripts</p>
   <h1>Five Star Series</h1>
   <p class="sub">Selected transcripts from the lectures of HH Radhanath Swami Maharaja spanning <strong>1988–2013</strong>. Search by title or track number below and click the &ldquo;Open Transcript&rdquo; button to read.</p>
 </header>
 
 <div class="controls">
-  <input type="text" id="search" placeholder="Search title or track number…" autocomplete="off">
+  <input type="text" id="search" placeholder="Search title, track number, year, or city…" autocomplete="off">
   <div class="pills" id="pills">
     <button class="pill active" data-series="all">All</button>
     <button class="pill" data-series="FS 1">FS 1</button>
@@ -350,7 +382,7 @@ function render() {
   const filtered = DATA.filter(r => {
     if (activeSeries !== 'all' && r.s !== activeSeries) return false;
     if (matchedOnly && r.st !== 'Match') return false;
-    if (q && !(r.t.toLowerCase().includes(q) || r.n.includes(q))) return false;
+    if (q && !(r.t.toLowerCase().includes(q) || r.n.includes(q) || (r.y && r.y.toLowerCase().includes(q)) || (r.loc && r.loc.toLowerCase().includes(q)))) return false;
     return true;
   });
 
@@ -366,9 +398,6 @@ function render() {
   listEl.innerHTML = filtered.map(r => {
     const tabClass = r.s.replace(' ', '');
     const metaBits = [r.y, r.loc, r.dur].filter(Boolean).join(' · ');
-    const statusHtml = r.st === 'Match'
-      ? '<span class="status ok">Found</span>'
-      : '<span class="status no">No transcript</span>';
     const hasFile = !!DRIVE_FILE_IDS[r.n];
     const actionHtml = r.st === 'Match'
       ? '<a href="' + transcriptUrl(r.n) + '" target="_blank" rel="noopener">' + (hasFile ? 'Open transcript ↗' : 'Search Drive folder ↗') + '</a>'
@@ -378,7 +407,6 @@ function render() {
       + '<div class="num">#' + r.n + '</div>'
       + '<div class="title">' + escapeHtml(r.t) + '</div>'
       + '<div class="meta' + (metaBits ? '' : ' dim') + '">' + (metaBits || '—') + '</div>'
-      + statusHtml
       + '<div class="action">' + actionHtml + '</div>'
       + '</div>';
   }).join('');
