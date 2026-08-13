@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Five Star Series — Lecture Archive</title>
+<title>Guru Mukha Padma Vakya</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=IBM+Plex+Mono:wght@400;600&family=Source+Serif+4:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
@@ -23,6 +23,7 @@
   * { box-sizing: border-box; }
   body {
     margin: 0;
+    min-height: 100vh;
     background: var(--paper);
     color: var(--ink);
     font-family: 'Source Serif 4', serif;
@@ -30,11 +31,10 @@
   }
   a { color: var(--brick); }
 
-  /* Header */
   header {
     background: var(--ink);
     color: var(--paper);
-    padding: 3.2rem 1.5rem 2.4rem;
+    padding: 3.6rem 1.5rem 2.8rem;
     position: relative;
     overflow: hidden;
     text-align: center;
@@ -60,188 +60,90 @@
     font-family: 'Fraunces', serif;
     font-optical-sizing: auto;
     font-weight: 600;
-    font-size: clamp(2.2rem, 6vw, 3.6rem);
+    font-size: clamp(2.4rem, 7vw, 4rem);
     line-height: 1.02;
-    margin: 0 0 0.6rem;
+    margin: 0 0 0.8rem;
     position: relative;
   }
   .sub {
-    font-size: 1.02rem;
+    font-size: 1.08rem;
     color: #C9C2B2;
-    max-width: 56ch;
+    max-width: 46ch;
     margin: 0 auto;
     position: relative;
+    font-style: italic;
   }
-  .sub strong { color: var(--paper); font-weight: 600; }
 
-  /* Controls */
-  .controls {
-    position: sticky;
-    top: 0;
-    z-index: 10;
-    background: var(--paper);
-    border-bottom: 1px solid var(--tan-line);
-    padding: 1rem 1.5rem;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.6rem;
-    align-items: center;
-    justify-content: center;
+  main {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 3.5rem 1.5rem 4.5rem;
+    text-align: center;
   }
-  #search {
-    font-family: 'Source Serif 4', serif;
-    font-size: 1rem;
-    padding: 0.6rem 0.9rem;
-    border: 1.5px solid var(--ink);
+  main p.desc {
+    font-size: 1.08rem;
+    line-height: 1.7;
+    color: var(--ink-soft);
+    max-width: 56ch;
+    margin: 0 auto 2.6rem;
+  }
+
+  .card {
+    display: block;
     background: var(--card);
+    border: 1px solid var(--tan-line);
+    border-radius: 6px;
+    padding: 2rem 1.75rem;
+    max-width: 420px;
+    margin: 0 auto;
+    text-decoration: none;
     color: var(--ink);
-    border-radius: 3px;
-    flex: 0 1 40%;
-    width: 40%;
-    min-width: 180px;
-  }
-  #search::placeholder { color: var(--tan); font-style: italic; }
-  #search:focus, .pill:focus-visible, .toggle:focus-visible {
-    outline: 2px solid var(--brick);
-    outline-offset: 1px;
-  }
-  .pills { display: flex; flex-wrap: wrap; gap: 0.4rem; }
-  .pill {
-    font-family: 'IBM Plex Mono', monospace;
-    font-size: 0.74rem;
-    letter-spacing: 0.03em;
-    padding: 0.42rem 0.7rem;
-    border: 1.5px solid var(--tan);
-    background: transparent;
-    color: var(--ink-soft);
-    border-radius: 999px;
-    cursor: pointer;
     transition: all 0.15s ease;
-    white-space: nowrap;
   }
-  .pill:hover { border-color: var(--brick); color: var(--brick); }
-  .pill.active {
-    background: var(--ink);
-    border-color: var(--ink);
-    color: var(--paper);
+  .card:hover {
+    border-color: var(--brick);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(43,38,32,0.1);
   }
-  .toggle-wrap {
-    display: flex;
-    align-items: center;
-    gap: 0.45rem;
+  .card-eyebrow {
     font-family: 'IBM Plex Mono', monospace;
-    font-size: 0.74rem;
-    color: var(--ink-soft);
-    cursor: pointer;
-    user-select: none;
-  }
-  .toggle {
-    width: 15px; height: 15px;
-    accent-color: var(--brick);
-    cursor: pointer;
-  }
-  #count {
-    font-family: 'IBM Plex Mono', monospace;
-    font-size: 0.74rem;
-    color: var(--tan);
-    padding: 0 1.5rem;
-    margin-top: 0.6rem;
-  }
-
-  /* Catalog list */
-  main { max-width: 980px; margin: 0 auto; padding: 0 1.5rem 4rem; }
-  .drawer { margin-top: 1.2rem; }
-
-  .row {
-    display: grid;
-    grid-template-columns: 3px 5.5ch 1fr auto auto auto;
-    gap: 0 1rem;
-    align-items: center;
-    background: var(--card);
-    border-bottom: 1px solid var(--tan-line);
-    padding: 0.85rem 0.9rem 0.85rem 0;
-    transition: background 0.12s ease;
-  }
-  .row:hover { background: #F1ECDE; }
-  .row:first-child { border-top: 1px solid var(--tan-line); }
-
-  .tab {
-    align-self: stretch;
-    border-radius: 2px;
-  }
-  .tab.FS1 { background: #8C5A3E; }
-  .tab.FS2 { background: #6E7B4E; }
-  .tab.FS3 { background: #3F5D54; }
-  .tab.FS4 { background: #4E6A87; }
-  .tab.FS5 { background: #7A3B2E; }
-
-  .num {
-    font-family: 'IBM Plex Mono', monospace;
-    font-size: 0.86rem;
-    color: var(--ink-soft);
-    letter-spacing: 0.02em;
-  }
-  .title {
-    font-size: 1rem;
-    line-height: 1.35;
-    min-width: 0;
-  }
-  .meta {
-    font-family: 'IBM Plex Mono', monospace;
-    font-size: 0.74rem;
-    color: var(--ink-soft);
-    white-space: nowrap;
-    text-align: right;
-  }
-  .meta.dim { color: var(--tan); }
-
-  .status {
-    font-family: 'IBM Plex Mono', monospace;
-    font-size: 0.68rem;
-    letter-spacing: 0.04em;
+    font-size: 0.7rem;
+    letter-spacing: 0.06em;
     text-transform: uppercase;
-    white-space: nowrap;
-    padding: 0.28rem 0.55rem;
-    border-radius: 999px;
-    justify-self: end;
+    color: var(--tan);
+    margin: 0 0 0.5rem;
   }
-  .status.ok { background: rgba(63,93,84,0.15); color: var(--pine); }
-  .status.no { background: rgba(122,59,46,0.13); color: var(--brick); }
-
-  .action a {
+  .card h2 {
+    font-family: 'Fraunces', serif;
+    font-weight: 600;
+    font-size: 1.5rem;
+    margin: 0 0 0.6rem;
+    color: var(--ink);
+  }
+  .card p {
+    font-size: 0.95rem;
+    color: var(--ink-soft);
+    margin: 0 0 1.4rem;
+    line-height: 1.55;
+  }
+  .btn {
+    display: inline-block;
     font-family: 'IBM Plex Mono', monospace;
     font-weight: 600;
-    font-size: 0.74rem;
-    letter-spacing: 0.02em;
+    font-size: 0.8rem;
+    letter-spacing: 0.03em;
     text-decoration: none;
     border: 1.5px solid var(--brick);
     background: var(--brick);
     color: var(--paper);
-    padding: 0.42rem 0.85rem;
+    padding: 0.55rem 1.2rem;
     border-radius: 4px;
-    white-space: nowrap;
-    display: inline-block;
     box-shadow: 0 1px 2px rgba(43,38,32,0.15);
     transition: all 0.12s ease;
   }
-  .action a:hover {
-    background: var(--brick-deep, #5E2C22);
-    border-color: var(--brick-deep, #5E2C22);
-    transform: translateY(-1px);
-    box-shadow: 0 3px 6px rgba(43,38,32,0.22);
-  }
-  .action span {
-    font-family: 'IBM Plex Mono', monospace;
-    font-size: 0.7rem;
-    color: var(--tan);
-  }
-
-  #empty {
-    display: none;
-    text-align: center;
-    padding: 3rem 1rem;
-    color: var(--ink-soft);
-    font-style: italic;
+  .card:hover .btn {
+    background: var(--brick-deep);
+    border-color: var(--brick-deep);
   }
 
   footer {
@@ -252,153 +154,30 @@
     color: var(--tan);
     letter-spacing: 0.03em;
   }
-
-  /* Mobile */
-  @media (max-width: 720px) {
-    .row {
-      grid-template-columns: 3px 1fr auto;
-      grid-template-areas:
-        "tab num status"
-        "tab title title"
-        "tab meta action";
-      row-gap: 0.35rem;
-      padding: 0.9rem 0.75rem 0.9rem 0;
-    }
-    .tab { grid-area: tab; }
-    .num { grid-area: num; }
-    .status { grid-area: status; }
-    .title { grid-area: title; }
-    .meta { grid-area: meta; text-align: left; }
-    .action { grid-area: action; justify-self: end; }
-    .toggle-wrap { margin-left: 0; width: 100%; order: 10; }
-  }
-
-  @media (prefers-reduced-motion: reduce) {
-    * { transition: none !important; }
-  }
 </style>
 </head>
 <body>
 
 <header>
-  <p class="eyebrow">His Holiness Radhanath Swami Lecture Transcripts</p>
-  <h1>Five Star Series</h1>
-  <p class="sub">Selected transcripts from the lectures of HH Radhanath Swami Maharaja spanning <strong>1988–2013</strong>. Search by title or track number below and click the &ldquo;Open Transcript&rdquo; button to read.</p>
+  <p class="eyebrow">Guru Mukha Padma Vakya</p>
+  <h1>Guru Mukha Padma Vakya</h1>
+  <p class="sub">Sanga to relish the nectar instructions of His Holiness Radhanath Swamy Maharaja</p>
 </header>
 
-<div class="controls">
-  <input type="text" id="search" placeholder="Search title or track number…" autocomplete="off">
-  <div class="pills" id="pills">
-    <button class="pill active" data-series="all">All</button>
-    <button class="pill" data-series="FS 1">FS 1</button>
-    <button class="pill" data-series="FS 2">FS 2</button>
-    <button class="pill" data-series="FS 3">FS 3</button>
-    <button class="pill" data-series="FS 4">FS 4</button>
-    <button class="pill" data-series="FS 5">FS 5</button>
-  </div>
-  <label class="toggle-wrap">
-    <input type="checkbox" class="toggle" id="matchedOnly">
-    Transcript found only
-  </label>
-</div>
-<div id="count"></div>
-
 <main>
-  <div class="drawer" id="list"></div>
-  <p id="empty">No tracks match that search.</p>
+  <p class="desc">A growing collection of lecture archives and transcripts preserving the teachings shared by His Holiness Radhanath Swami Maharaja over the years. Begin with the catalog below.</p>
+
+  <a class="card" href="five-star-series/">
+    <p class="card-eyebrow">Lecture Archive</p>
+    <h2>Five Star Series</h2>
+    <p>Selected transcripts spanning 1988&ndash;2013, searchable by title or track number.</p>
+    <span class="btn">Enter Archive &rarr;</span>
+  </a>
 </main>
 
 <footer>
-  Track numbers and titles as recorded in the original printed index · Transcripts cross-referenced against the RNS transcription database
+  Guru Mukha Padma Vakya
 </footer>
-
-<script>
-const DATA = [{"n": "0898", "t": "Morning SB Class", "s": "FS 1", "loc": "", "y": "", "dur": "", "st": "Match"}, {"n": "0899", "t": "Krishna's Lotus Feet is the Real Shelter", "s": "FS 1", "loc": "", "y": "2007", "dur": "", "st": "Match"}, {"n": "0900", "t": "Miseries are Krishna's Wake Up Call", "s": "FS 1", "loc": "", "y": "2007", "dur": "", "st": "Match"}, {"n": "0901", "t": "What it Takes to Go B_T_G", "s": "FS 1", "loc": "", "y": "", "dur": "", "st": "Match"}, {"n": "0902", "t": "Ramnavmi Lec", "s": "FS 1", "loc": "", "y": "2007", "dur": "", "st": "Match"}, {"n": "0903", "t": "Understanding the Spirit of Vrindavan Pastimes", "s": "FS 1", "loc": "", "y": "2007", "dur": "", "st": "Match"}, {"n": "0904", "t": "Essential Lessons from Indras Life", "s": "FS 1", "loc": "", "y": "2007", "dur": "", "st": "Match"}, {"n": "0905", "t": "Sincere Husband And Chaste Wife Advance Together", "s": "FS 1", "loc": "", "y": "", "dur": "", "st": "Match"}, {"n": "0906", "t": "Antidote Of Envy Is Appreciation", "s": "FS 1", "loc": "", "y": "2008", "dur": "", "st": "Match"}, {"n": "0907", "t": "An Empty Husk", "s": "FS 1", "loc": "", "y": "", "dur": "", "st": "Match"}, {"n": "0908", "t": "Determination Like Bird Chatak", "s": "FS 1", "loc": "", "y": "", "dur": "", "st": "Match"}, {"n": "0909", "t": "Don't Be Like A Bumble Bee", "s": "FS 1", "loc": "", "y": "", "dur": "", "st": "Match"}, {"n": "0910", "t": "Forgiveness", "s": "FS 1", "loc": "", "y": "", "dur": "", "st": "Match"}, {"n": "0911", "t": "Glorify Devotees Inspite Of Our conditionings", "s": "FS 1", "loc": "", "y": "", "dur": "", "st": "Match"}, {"n": "0912", "t": "How To Please Krsna", "s": "FS 1", "loc": "", "y": "", "dur": "", "st": "Match"}, {"n": "0913", "t": "Markandeya Rishi story", "s": "FS 1", "loc": "", "y": "", "dur": "", "st": "Match"}, {"n": "0914", "t": "Material Gains Can Be Troubles", "s": "FS 1", "loc": "", "y": "", "dur": "", "st": "Match"}, {"n": "0915", "t": "More You Have More You Suffer", "s": "FS 1", "loc": "", "y": "", "dur": "", "st": "Match"}, {"n": "0916", "t": "No Happiness In This Material", "s": "FS 1", "loc": "", "y": "", "dur": "", "st": "Match"}, {"n": "0917", "t": "Obey Your Spiritual Master", "s": "FS 1", "loc": "", "y": "", "dur": "", "st": "Match"}, {"n": "0918", "t": "Our Desperate Need", "s": "FS 1", "loc": "", "y": "", "dur": "", "st": "Match"}, {"n": "0919", "t": "Punch Your Way Back Home Back", "s": "FS 1", "loc": "", "y": "", "dur": "", "st": "Match"}, {"n": "0920", "t": "Stop Trusting Your Mind", "s": "FS 1", "loc": "", "y": "", "dur": "", "st": "Match"}, {"n": "0921", "t": "The Correct Anchorage", "s": "FS 1", "loc": "", "y": "", "dur": "", "st": "Match"}, {"n": "0922", "t": "The Desperate Need To Take She", "s": "FS 1", "loc": "", "y": "", "dur": "", "st": "Match"}, {"n": "0923", "t": "The essential thing to understand", "s": "FS 1", "loc": "", "y": "", "dur": "", "st": "No Match"}, {"n": "0924", "t": "Unalloyed Devotional Service", "s": "FS 1", "loc": "", "y": "", "dur": "", "st": "Match"}, {"n": "0925", "t": "Understanding What Is Real Happiness", "s": "FS 1", "loc": "", "y": "", "dur": "", "st": "Match"}, {"n": "0926", "t": "We Are Completely Dependent On", "s": "FS 1", "loc": "", "y": "", "dur": "", "st": "Match"}, {"n": "0927", "t": "We are Never Safe In Material", "s": "FS 1", "loc": "", "y": "", "dur": "", "st": "Match"}, {"n": "0928", "t": "We are so ungrateful", "s": "FS 1", "loc": "", "y": "", "dur": "", "st": "No Match"}, {"n": "0929", "t": "Who Is Most Dear To Krsna", "s": "FS 1", "loc": "", "y": "", "dur": "", "st": "Match"}, {"n": "0930", "t": "Attachment To Krishna", "s": "FS 2", "loc": "", "y": "", "dur": "", "st": "Match"}, {"n": "0931", "t": "Beware Of Mad Elephant Offence", "s": "FS 2", "loc": "", "y": "", "dur": "", "st": "Match"}, {"n": "0932", "t": "Cutting The Material Roots", "s": "FS 2", "loc": "", "y": "", "dur": "", "st": "Match"}, {"n": "0933", "t": "Don't Put Your Faith In This Material World", "s": "FS 2", "loc": "", "y": "", "dur": "", "st": "Match"}, {"n": "0934", "t": "Fool's Paradise vs Goloka Vrindavan", "s": "FS 2", "loc": "", "y": "", "dur": "", "st": "Match"}, {"n": "0935", "t": "Importance Of Austerity", "s": "FS 2", "loc": "", "y": "", "dur": "", "st": "Match"}, {"n": "0936", "t": "Krishna-The Master of Mystics", "s": "FS 2", "loc": "", "y": "", "dur": "", "st": "Match"}, {"n": "0937", "t": "Lord's Special Mercy", "s": "FS 2", "loc": "", "y": "", "dur": "", "st": "Match"}, {"n": "0938", "t": "Making Life Simple", "s": "FS 2", "loc": "", "y": "", "dur": "", "st": "Match"}, {"n": "0939", "t": "Material Life", "s": "FS 2", "loc": "", "y": "", "dur": "", "st": "Match"}, {"n": "0940", "t": "One Pointed Determination", "s": "FS 2", "loc": "", "y": "", "dur": "", "st": "Match"}, {"n": "0941", "t": "Our Faith Is Our Life", "s": "FS 2", "loc": "", "y": "", "dur": "", "st": "Match"}, {"n": "0942", "t": "Power Of Maya", "s": "FS 2", "loc": "", "y": "", "dur": "", "st": "Match"}, {"n": "0943", "t": "Prayers Of Vaishnavas Never Go (in vain)", "s": "FS 2", "loc": "", "y": "", "dur": "", "st": "Match"}, {"n": "0944", "t": "Reading The Bhagvatam", "s": "FS 2", "loc": "", "y": "", "dur": "", "st": "Match"}, {"n": "0945", "t": "Real Cause Of Suffering", "s": "FS 2", "loc": "", "y": "", "dur": "", "st": "Match"}, {"n": "0946", "t": "Real Humility", "s": "FS 2", "loc": "", "y": "", "dur": "", "st": "Match"}, {"n": "0947", "t": "Rooting Out The Trinavarta", "s": "FS 2", "loc": "", "y": "", "dur": "", "st": "Match"}, {"n": "0948", "t": "Secret Of Detachment", "s": "FS 2", "loc": "", "y": "", "dur": "", "st": "Match"}, {"n": "0949", "t": "Spiritual Warfare", "s": "FS 2", "loc": "", "y": "", "dur": "", "st": "Match"}, {"n": "0950", "t": "Teachings From Story Of Ajamil", "s": "FS 2", "loc": "", "y": "", "dur": "", "st": "Match"}, {"n": "0951", "t": "The Highest Pastimes", "s": "FS 2", "loc": "", "y": "", "dur": "", "st": "Match"}, {"n": "0952", "t": "The Unexpected Shakatasur", "s": "FS 2", "loc": "", "y": "", "dur": "", "st": "Match"}, {"n": "0953", "t": "We Are Really Insignificant", "s": "FS 2", "loc": "", "y": "", "dur": "", "st": "Match"}, {"n": "0954", "t": "We have no Independance from Krishna", "s": "FS 2", "loc": "", "y": "", "dur": "", "st": "Match"}, {"n": "0955", "t": "What Do You have To Renounce", "s": "FS 2", "loc": "", "y": "", "dur": "", "st": "Match"}, {"n": "0956", "t": "We Have No Power To Understand Krishna", "s": "FS 3", "loc": "", "y": "1994", "dur": "", "st": "Match"}, {"n": "0957", "t": "Association Of Devotees", "s": "FS 3", "loc": "", "y": "", "dur": "", "st": "Match"}, {"n": "0958", "t": "Attentive Hearing & Chanting", "s": "FS 3", "loc": "", "y": "", "dur": "", "st": "Match"}, {"n": "0959", "t": "Becoming Sincere", "s": "FS 3", "loc": "", "y": "", "dur": "", "st": "Match"}, {"n": "0960", "t": "Bhakti Free From Motivation", "s": "FS 3", "loc": "", "y": "", "dur": "", "st": "Match"}, {"n": "0961", "t": "Cause Of Despondency", "s": "FS 3", "loc": "", "y": "", "dur": "", "st": "Match"}, {"n": "0962", "t": "Cultivate Right Spirit For Chanting", "s": "FS 3", "loc": "", "y": "", "dur": "", "st": "Match"}, {"n": "0963", "t": "Cultivating Our Attachment Towards", "s": "FS 3", "loc": "", "y": "", "dur": "", "st": "Match"}, {"n": "0964", "t": "Cultivating the Proper Substance", "s": "FS 3", "loc": "", "y": "", "dur": "", "st": "Match"}, {"n": "0965", "t": "Determination Like Bird Chatak", "s": "FS 3", "loc": "", "y": "", "dur": "", "st": "Match"}, {"n": "0966", "t": "Extingushing The Fire Of Material", "s": "FS 3", "loc": "", "y": "", "dur": "", "st": "Match"}, {"n": "0967", "t": "Festival of Inspiration Final", "s": "FS 3", "loc": "", "y": "", "dur": "", "st": "Match"}, {"n": "0968", "t": "First Purify Ourselves", "s": "FS 3", "loc": "", "y": "", "dur": "", "st": "Match"}, {"n": "0969", "t": "Forest Of Material Enjoyment", "s": "FS 3", "loc": "", "y": "", "dur": "", "st": "Match"}, {"n": "0970", "t": "Futility of Material Pleasure", "s": "FS 3", "loc": "", "y": "", "dur": "", "st": "Match"}, {"n": "0971", "t": "Glories Of Srimad Bhagavatam", "s": "FS 3", "loc": "", "y": "", "dur": "", "st": "Match"}, {"n": "0972", "t": "Glories of Srimati Radharani", "s": "FS 3", "loc": "", "y": "", "dur": "", "st": "Match"}, {"n": "0973", "t": "Greed", "s": "FS 3", "loc": "", "y": "", "dur": "", "st": "Match"}, {"n": "0974", "t": "Like A Fish", "s": "FS 3", "loc": "", "y": "", "dur": "", "st": "Match"}, {"n": "0975", "t": "Materialists Are Like Rats", "s": "FS 3", "loc": "", "y": "", "dur": "", "st": "Match"}, {"n": "0976", "t": "Only By Devotion One Can Attract Krishna", "s": "FS 3", "loc": "", "y": "", "dur": "", "st": "Match"}, {"n": "0977", "t": "Our Life Is Our Egerness", "s": "FS 3", "loc": "", "y": "", "dur": "", "st": "Match"}, {"n": "0978", "t": "Pure Devotional Service Is Rea(l Renunciation)", "s": "FS 3", "loc": "", "y": "", "dur": "", "st": "Match"}, {"n": "0979", "t": "Real Control of Mind", "s": "FS 3", "loc": "", "y": "", "dur": "", "st": "Match"}, {"n": "0980", "t": "Real Intelligence", "s": "FS 3", "loc": "", "y": "", "dur": "", "st": "Match"}, {"n": "0981", "t": "Real Opulance Is Association Of devotees", "s": "FS 3", "loc": "", "y": "", "dur": "", "st": "Match"}, {"n": "0982", "t": "Replace Bodily Attachment To Krishna", "s": "FS 3", "loc": "", "y": "", "dur": "", "st": "Match"}, {"n": "0983", "t": "Right Approach To Bhagavatam", "s": "FS 3", "loc": "", "y": "", "dur": "", "st": "Match"}, {"n": "0984", "t": "Selfless Love and Selfless Service", "s": "FS 3", "loc": "", "y": "", "dur": "", "st": "Match"}, {"n": "0985", "t": "Simple Living High Thinking", "s": "FS 3", "loc": "", "y": "", "dur": "", "st": "Match"}, {"n": "0986", "t": "Spiritual Progress", "s": "FS 3", "loc": "", "y": "", "dur": "", "st": "Match"}, {"n": "0987", "t": "The Greatest Treasure", "s": "FS 3", "loc": "", "y": "", "dur": "", "st": "Match"}, {"n": "0988", "t": "Time Devours Everything", "s": "FS 3", "loc": "", "y": "", "dur": "", "st": "Match"}, {"n": "0989", "t": "Understanding The Greatness Of", "s": "FS 3", "loc": "", "y": "", "dur": "", "st": "Match"}, {"n": "0990", "t": "We Are Helpless", "s": "FS 3", "loc": "", "y": "", "dur": "", "st": "Match"}, {"n": "0991", "t": "We cannot imitate Jadabharat", "s": "FS 3", "loc": "", "y": "", "dur": "", "st": "No Match"}, {"n": "0992", "t": "What Is Responsibility", "s": "FS 3", "loc": "", "y": "", "dur": "", "st": "Match"}, {"n": "0993", "t": "What Janmashtami Really Means", "s": "FS 3", "loc": "", "y": "", "dur": "", "st": "Match"}, {"n": "0994", "t": "Why I Can't Be Like That", "s": "FS 3", "loc": "", "y": "", "dur": "", "st": "Match"}, {"n": "0995", "t": "How to Approach Srimati Radharani", "s": "FS 3", "loc": "", "y": "", "dur": "", "st": "Match"}, {"n": "0996", "t": "Holding Unto The Life Boat Of Devotional Service", "s": "FS 4", "loc": "", "y": "2002", "dur": "", "st": "Match"}, {"n": "0997", "t": "Dissipating Cloud Of Illusion Through Love Of God NSCI", "s": "FS 4", "loc": "", "y": "2002", "dur": "", "st": "Match"}, {"n": "0998", "t": "Beauty Of Old Age", "s": "FS 4", "loc": "Mumbai", "y": "2002", "dur": "", "st": "Match"}, {"n": "0999", "t": "Krsna Always Protects His Devotees", "s": "FS 4", "loc": "Mumbai", "y": "2002", "dur": "", "st": "Match"}, {"n": "1000", "t": "Fearlessly Surrender Our Lives To Krsna", "s": "FS 4", "loc": "Mumbai", "y": "2002", "dur": "", "st": "Match"}, {"n": "1001", "t": "Begging Haridas Thakura for a Higher Taste", "s": "FS 4", "loc": "", "y": "2003", "dur": "", "st": "Match"}, {"n": "1002", "t": "The Importance of Determination", "s": "FS 4", "loc": "New York", "y": "2004", "dur": "01:03:12", "st": "Match"}, {"n": "1003", "t": "Krishna Always Protects His Devotee", "s": "FS 4", "loc": "New York", "y": "2004", "dur": "01:55:21", "st": "Match"}, {"n": "1004", "t": "Baffled In Casino of Maya", "s": "FS 4", "loc": "", "y": "2009", "dur": "01:22:35", "st": "Match"}, {"n": "1005", "t": "Radhastami Glories Of Shrimati Radharani", "s": "FS 4", "loc": "Mumbai", "y": "2009", "dur": "00:54:07", "st": "Match"}, {"n": "1006", "t": "Maya Won't Let Go Until We Surrender", "s": "FS 4", "loc": "", "y": "2009", "dur": "01:05:35", "st": "Match"}, {"n": "1007", "t": "Preparing For Death", "s": "FS 4", "loc": "Mumbai", "y": "1989", "dur": "00:30:34", "st": "Match"}, {"n": "1008", "t": "Material Enjoyment Danger At Every Step", "s": "FS 4", "loc": "Mumbai", "y": "1989", "dur": "00:42:59", "st": "Match"}, {"n": "1009", "t": "Conquering The Enemy Of Lust", "s": "FS 4", "loc": "Mumbai", "y": "1989", "dur": "00:42:44", "st": "Match"}, {"n": "1010", "t": "Maya comes in Disguise", "s": "FS 4", "loc": "NV", "y": "1990", "dur": "00:44:22", "st": "Match"}, {"n": "1011", "t": "What Janmashtami Really Means", "s": "FS 4", "loc": "Mumbai", "y": "1990", "dur": "00:48:19", "st": "Match"}, {"n": "1012", "t": "The Greatest Treasure", "s": "FS 4", "loc": "Mumbai", "y": "1991", "dur": "00:42:39", "st": "Match"}, {"n": "1013", "t": "Q&A True Principles Of Religion", "s": "FS 4", "loc": "Pune", "y": "1991", "dur": "01:18:19", "st": "Match"}, {"n": "1014", "t": "Dangerous Road Pride", "s": "FS 4", "loc": "Mumbai", "y": "1991", "dur": "", "st": "Match"}, {"n": "1015", "t": "Q&A Obedience To Guru Parampara", "s": "FS 4", "loc": "Mumbai", "y": "1991", "dur": "", "st": "Match"}, {"n": "1016", "t": "Q&A Questions And Answers", "s": "FS 4", "loc": "Pune", "y": "1992", "dur": "", "st": "Match"}, {"n": "1017", "t": "Q&A Questions And Answers", "s": "FS 4", "loc": "Mumbai", "y": "1992", "dur": "", "st": "Match"}, {"n": "1018", "t": "When Ego Is Attacked", "s": "FS 4", "loc": "", "y": "1993", "dur": "", "st": "Match"}, {"n": "1019", "t": "Humbling Ourselves", "s": "FS 4", "loc": "Mumbai", "y": "1994", "dur": "", "st": "Match"}, {"n": "1020", "t": "Q&A", "s": "FS 4", "loc": "Pune", "y": "1994", "dur": "01:16:03", "st": "Match"}, {"n": "1021", "t": "Material World On Blazing Fire", "s": "FS 4", "loc": "Mumbai", "y": "1994", "dur": "00:51:13", "st": "Match"}, {"n": "1022", "t": "To Avoid Fall Down", "s": "FS 4", "loc": "Mumbai", "y": "1994", "dur": "00:48:09", "st": "Match"}, {"n": "1023", "t": "Priorities Of Bhakti", "s": "FS 4", "loc": "Mumbai", "y": "1994", "dur": "00:57:22", "st": "Match"}, {"n": "1024", "t": "Time Devours Everything", "s": "FS 4", "loc": "Mumbai", "y": "1994", "dur": "00:47:00", "st": "Match"}, {"n": "1025", "t": "Quit Home Timely", "s": "FS 4", "loc": "Mumbai", "y": "1996", "dur": "01:10:40", "st": "Match"}, {"n": "1026", "t": "Humility Is A Must", "s": "FS 4", "loc": "Mumbai", "y": "1996", "dur": "01:04:35", "st": "Match"}, {"n": "1027", "t": "Power Of Bhakti", "s": "FS 4", "loc": "Udupi", "y": "1997", "dur": "00:32:44", "st": "Match"}, {"n": "1028", "t": "Association of Devotees", "s": "FS 4", "loc": "Mumbai", "y": "1996", "dur": "01:08:33", "st": "Match"}, {"n": "1029", "t": "Fixed Determination for Krishna", "s": "FS 4", "loc": "Mumbai", "y": "1998", "dur": "00:17:58", "st": "Match"}, {"n": "1030", "t": "Dying Giving Our Lives for Krishna", "s": "FS 5", "loc": "Mumbai", "y": "1999", "dur": "01:16:34", "st": "Match"}, {"n": "1031", "t": "Devotee Must be Grateful", "s": "FS 5", "loc": "Mumbai", "y": "1999", "dur": "01:02:22", "st": "Match"}, {"n": "1032", "t": "Danger at Every Step", "s": "FS 5", "loc": "Mumbai", "y": "1999", "dur": "", "st": "Match"}, {"n": "1033", "t": "The Only Secure Investment", "s": "FS 5", "loc": "", "y": "2009", "dur": "01:22:02", "st": "Match"}, {"n": "1034", "t": "Forgetting Krishna The Greatest Crisis", "s": "FS 5", "loc": "", "y": "2009", "dur": "01:10:16", "st": "Match"}, {"n": "1035", "t": "Faith Is The Substance Of Bhakti", "s": "FS 5", "loc": "", "y": "2009", "dur": "01:00:21", "st": "Match"}, {"n": "1036", "t": "Accept Reversals Gratefully Without Getting Disturbed", "s": "FS 5", "loc": "", "y": "2009", "dur": "01:31:40", "st": "Match"}, {"n": "1037", "t": "Making Choice To Act For Krishna's Pleasure", "s": "FS 5", "loc": "Mumbai", "y": "2010", "dur": "01:15:53", "st": "Match"}, {"n": "1038", "t": "Parallels Between Vidura Prahalada And Vibhisana", "s": "FS 5", "loc": "Mumbai", "y": "2010", "dur": "01:35:36", "st": "Match"}, {"n": "1039", "t": "Lord Cant Tolerate Exploitative And Proud Mentality", "s": "FS 5", "loc": "", "y": "2011", "dur": "01:26:00", "st": "Match"}, {"n": "1040", "t": "Real Peace Is Peace Of Mind", "s": "FS 5", "loc": "", "y": "2011", "dur": "01:03:32", "st": "Match"}, {"n": "1041", "t": "Overcoming The Disease Of Mine And Yours", "s": "FS 5", "loc": "", "y": "2011", "dur": "01:32:16", "st": "Match"}, {"n": "1042", "t": "Expressing Love And Care By Real Gestures", "s": "FS 5", "loc": "", "y": "2011", "dur": "01:03:04", "st": "Match"}, {"n": "1043", "t": "Becoming Careful Of Committing Vaishnava Aparadha", "s": "FS 5", "loc": "", "y": "2011", "dur": "01:21:17", "st": "Match"}, {"n": "1044", "t": "Putana The Demon In Motherly Disguise", "s": "FS 5", "loc": "", "y": "2012", "dur": "01:02:58", "st": "Match"}, {"n": "1045", "t": "Spiritual Advancement Requires Enthusiasm And Gratitude", "s": "FS 5", "loc": "", "y": "2012", "dur": "01:06:59", "st": "Match"}, {"n": "1046", "t": "Lord's Mercy Flow Towards The Humble", "s": "FS 5", "loc": "", "y": "2012", "dur": "00:54:43", "st": "Match"}, {"n": "1047", "t": "Seeing Material And Spiritual Perspectives Of Any Calamity", "s": "FS 5", "loc": "", "y": "2012", "dur": "01:24:20", "st": "Match"}, {"n": "1048", "t": "Everything About Krishna Is Inconceivable", "s": "FS 5", "loc": "", "y": "2012", "dur": "01:23:20", "st": "Match"}, {"n": "1049", "t": "Krsna Is Pleased With Simple Offerings", "s": "FS 5", "loc": "Mumbai", "y": "2013", "dur": "01:30:20", "st": "Match"}, {"n": "1050", "t": "Pleasing Oneself To Please Krsna", "s": "FS 5", "loc": "Mumbai", "y": "1989", "dur": "00:46:23", "st": "Match"}, {"n": "1051", "t": "Not Bad Mad But Sick", "s": "FS 5", "loc": "Mumbai", "y": "1989", "dur": "01:41:37", "st": "Match"}, {"n": "1052", "t": "Utter Dependence", "s": "FS 5", "loc": "Mumbai", "y": "1989", "dur": "00:39:03", "st": "Match"}, {"n": "1053", "t": "Faith", "s": "FS 5", "loc": "Mumbai", "y": "1989", "dur": "00:41:50", "st": "Match"}, {"n": "1054", "t": "Depending On Krishna", "s": "FS 5", "loc": "Mumbai", "y": "1989", "dur": "00:45:17", "st": "Match"}, {"n": "1055", "t": "The Real Vairagya", "s": "FS 5", "loc": "", "y": "1989", "dur": "00:35:41", "st": "Match"}, {"n": "1056", "t": "Krishna Never Leaves His Devotees", "s": "FS 5", "loc": "Mumbai", "y": "1990", "dur": "00:43:28", "st": "Match"}, {"n": "1057", "t": "Spiritual Life Means Warfare", "s": "FS 5", "loc": "Mumbai", "y": "1990", "dur": "00:44:16", "st": "Match"}, {"n": "1058", "t": "Q&A Govardhan Lilla", "s": "FS 5", "loc": "Mumbai", "y": "1990", "dur": "00:59:11", "st": "Match"}, {"n": "1059", "t": "Punishment for a vaishnava offence", "s": "FS 5", "loc": "Mumbai", "y": "1991", "dur": "00:53:03", "st": "Match"}, {"n": "1060", "t": "How To Overcome Material Energy", "s": "FS 5", "loc": "Mumbai", "y": "1991", "dur": "00:46:17", "st": "Match"}, {"n": "1061", "t": "The Pastimes Of Lord Ramachandra", "s": "FS 5", "loc": "Mumbai", "y": "1991", "dur": "00:43:58", "st": "Match"}, {"n": "1062", "t": "The Disease Of Envy", "s": "FS 5", "loc": "Mumbai", "y": "1991", "dur": "00:47:07", "st": "Match"}, {"n": "1063", "t": "Devahuti's Enquiries To Lord Kapila", "s": "FS 5", "loc": "Mumbai", "y": "1991", "dur": "00:38:10", "st": "Match"}, {"n": "1064", "t": "Are You The Proprietor", "s": "FS 5", "loc": "Mumbai", "y": "1991", "dur": "01:00:21", "st": "Match"}, {"n": "1065", "t": "Importance Of Krishna Katha", "s": "FS 5", "loc": "Mumbai", "y": "1991", "dur": "00:38:39", "st": "Match"}, {"n": "1066", "t": "Calling With Helplessness", "s": "FS 5", "loc": "Mumbai", "y": "1991", "dur": "00:45:40", "st": "Match"}, {"n": "1067", "t": "Attachment For Sense Enjoyment", "s": "FS 5", "loc": "Mumbai", "y": "1992", "dur": "00:38:06", "st": "Match"}, {"n": "1068", "t": "Different Categories Of Devotees", "s": "FS 5", "loc": "Mumbai", "y": "1992", "dur": "00:57:37", "st": "Match"}, {"n": "1069", "t": "A Moment's Association", "s": "FS 5", "loc": "Mumbai", "y": "1992", "dur": "01:08:47", "st": "Match"}, {"n": "1070", "t": "Disloyal Controvercy", "s": "FS 5", "loc": "Mumbai", "y": "1992", "dur": "00:44:53", "st": "Match"}, {"n": "1071", "t": "Mysticism And Devotion", "s": "FS 5", "loc": "Mumbai", "y": "1992", "dur": "01:03:42", "st": "Match"}, {"n": "1072", "t": "Meaning Of False Pride", "s": "FS 5", "loc": "Mumbai", "y": "1993", "dur": "00:59:41", "st": "Match"}, {"n": "1073", "t": "To Have Innocent Faith", "s": "FS 5", "loc": "Mumbai", "y": "1993", "dur": "00:50:37", "st": "Match"}, {"n": "1074", "t": "Enthusiasam Patience And Faith", "s": "FS 5", "loc": "Mumbai", "y": "1993", "dur": "01:06:48", "st": "Match"}, {"n": "1075", "t": "Death Means Eternal Life", "s": "FS 5", "loc": "Mumbai", "y": "1993", "dur": "00:50:36", "st": "Match"}, {"n": "1076", "t": "A Prison House Without Walls", "s": "FS 5", "loc": "", "y": "1993", "dur": "00:57:26", "st": "Match"}, {"n": "1077", "t": "Accept Lord Krishna's Mercy", "s": "FS 5", "loc": "Mumbai", "y": "1993", "dur": "01:03:04", "st": "Match"}, {"n": "1078", "t": "Gopi's Exalted Love for Lord Krsna", "s": "FS 5", "loc": "Mumbai", "y": "1993", "dur": "00:53:48", "st": "Match"}, {"n": "1079", "t": "Unmotivated Unconditional Love", "s": "FS 5", "loc": "Mumbai", "y": "1993", "dur": "00:59:38", "st": "Match"}, {"n": "1080", "t": "Learning To Take Shelter", "s": "FS 5", "loc": "Mumbai", "y": "1993", "dur": "01:01:00", "st": "Match"}, {"n": "1081", "t": "Putting Krishna In The Center", "s": "FS 5", "loc": "Mumbai", "y": "1993", "dur": "01:07:26", "st": "Match"}, {"n": "1082", "t": "The Exalted Position Of Gopis", "s": "FS 5", "loc": "Mumbai", "y": "1993", "dur": "00:37:28", "st": "Match"}, {"n": "1083", "t": "To Be Greedy For Krishna", "s": "FS 5", "loc": "Mumbai", "y": "1993", "dur": "00:51:29", "st": "Match"}, {"n": "1084", "t": "Thank for Lord Krsna's Mercy", "s": "FS 5", "loc": "", "y": "1993", "dur": "01:48:09", "st": "Match"}, {"n": "1085", "t": "Srimati Radharani the Supreme Love", "s": "FS 5", "loc": "", "y": "1993", "dur": "00:54:01", "st": "Match"}, {"n": "1086", "t": "Value Of Association Of Devotees", "s": "FS 5", "loc": "Mumbai", "y": "1993", "dur": "01:24:44", "st": "Match"}, {"n": "1087", "t": "Sweetness Of Bhakti", "s": "FS 5", "loc": "Mumbai", "y": "1993", "dur": "01:41:37", "st": "Match"}, {"n": "1088", "t": "Need For Association", "s": "FS 5", "loc": "Mumbai", "y": "1993", "dur": "00:36:45", "st": "Match"}, {"n": "1089", "t": "Controlling Senses Through Service", "s": "FS 5", "loc": "Mumbai", "y": "1993", "dur": "01:07:02", "st": "Match"}, {"n": "1090", "t": "We Are Homeless Creature", "s": "FS 5", "loc": "Mumbai", "y": "1993", "dur": "", "st": "Match"}, {"n": "1091", "t": "We Are Spoilt Brats", "s": "FS 5", "loc": "Mumbai", "y": "1993", "dur": "", "st": "Match"}, {"n": "1092", "t": "Serving Vaishnavas With Life And Soul", "s": "FS 5", "loc": "Mumbai", "y": "1993", "dur": "", "st": "Match"}];
-
-const DRIVE_FOLDER_ID = "17VvaiaRiDSz240niPAApjmhOeaS6Ik_I";
-
-// Direct Drive file IDs for lectures whose transcript docx has been copied
-// and verified (exact or newer stage/version match). Opens the actual
-// Word file in Drive's viewer, not a folder search.
-const DRIVE_FILE_IDS = {"0898": "1wOzTnL81hqVCyKZAh7ubLvkSEpAwXVPH", "0901": "1_bACUVv4bCWZbBMAmaElsk-nL6A1nOWy", "0995": "1cW1Fwbn1FJXDXKOyUJ7LgARiHn2wmmQj", "0977": "1Sa4Dq075gC-P80SPT3vB1z77NQl5peB9", "0975": "1gXB4MMbbr9msQqXNZAJu5TaC5kmgGHx4", "0969": "1e5781lq920ZCgKI0Huvfgw-TJufuHHes", "0965": "1-h3VQ_W_NJ_pAHxp9PcYdooyw7QwCErS", "0962": "1Y45GrnMVgrc6OhuZ-sPxFakmhH9h8nyg", "0960": "1jKTIWDl0HBqGECJTfMyQmyZWx99FvSPs", "0957": "1Ye6WNGquM_IiNk_csOvk7U_zaqPci9ip", "0956": "1y277DZsfo-QikOCcp0GsE7NVPCqipjj1", "0955": "13-b2CBvCpiP6sVqDnTe1iKs_IFjxTYuV", "0952": "1eJQNZ31QoubapAAIMFjTZavWWZHTlkS_", "0951": "1kIe99Tkd2bI4A2vWnvVwkkmSgujQ9qpu", "0950": "10FLP9IHs-aPZ78fzGxm9PzlssN7ntZ_g", "0944": "1w9Ei3FR1GNsjl1gxLLAhzsD_I7WPbzvB", "0933": "1A9bOoCPa5L1jhb1ka4o-ahNTBStwwx6c", "0908": "1mFKPPSZATlbonkuBV7OCMAqnfyDtWObt", "0902": "1RsZO17xBWYyYXcZuAd1eujRxUxTAXOaZ", "0899": "1ZqLKzdl4U0t005PhZM5rNNEkTEr4il3Y", "1074": "17uUW3TQTJuP5hb3qOr7aAweHjACWWUlI", "1054": "1yDx8HIy2wFqSddq2qPJXQH8QAWyQd-HB", "1052": "14WMxzCqiLfU2_enXECodrXk_URyWmCEO", "1051": "1kWhsicbc8ZwBlOpbBdP6Ze46bAJJ5YJP", "1050": "1MiqcC1x8Y0c7DaV_oe_h46bQIc3F2V88", "1033": "1Ka7Jodnx5MsQCo9nEQlsI5Ta44G66b7G", "1009": "1krSpaFb00mx56M6Enw5jZxy9gSNWjIJz", "0943": "1FwVprjY7LxSYXSFNyHDx3dMvrrfMtPiu", "1053": "1phedHgnu57NHbGnGrenejBY-yM_aajlk", "1036": "1ilzFeqVXq_0yR70e_tGGw18ptvzzOOlF", "1034": "12GEHjIp4W1wHRDRolcP309jwnQzSWhVE", "0989": "1HIc6sTZR7UI645guDWkLLRq5XupvRGX6", "0917": "1kvrJndIYKG49FA-TFOCMKQKIV7mNo4jT", "0907": "1-YZ5HRuUWEMZPn428vn5WvB3V9LwcwJZ", "1056": "17KcFPJTRK59vyMipMMR1aIEpEyQiCnyk", "1055": "1Vja9dmD6iW8IsH9W28cMlASUzikaC0Xt", "1049": "1MYQpF33tslzzNaZZ2XkkVZmSKlbcMrcW", "1048": "1kYk5MHjpiIh_lG0BcPC56JLZ63ohE2EQ", "1047": "1ay5b2vxFdtxGFJD0H54y4JnMKfPP-S9r", "1046": "1TWAbESAPivKRBYxB_spqjpekyuYH-6JP", "1045": "1ZM2oC596JLAgDqdBRUy7Rp4ne5ZRXU9G", "1044": "15P1F0qToZTiK6kVIyHMso_3NEJtxJKDG", "1043": "1W5iNeSDxavoFMco01cvX6qelUioIWWr2", "1042": "1JVb0g8qg7wE25ystJDwSZ_HZbxhO2KDl", "1041": "1YTA0CvJJNjnIfvjX6U-ZG0n13cHRMK3R", "1040": "1jVJtinojLc69ZHgjG33nOYupZN1wOOFx", "1039": "1vU7N0OhfOu5X-u-hMS9Oram8OUZTdW9-", "1038": "1NNxl-VNuD3mrEyi65Y_PcaXc2brL-Apw", "1037": "1W7JVCM6wLoA6VE_kE9KaZvGifL8OjqLy", "1032": "1nPV5q4ZA_3O6-uEceIdVKpSiy5v5rRx4", "1031": "1nga1NT1QuXwgHdxJcuvN87-cQjCN2v4K", "1030": "17X2FSP3ie3_NMsb8DbxlEPuZy_mkc-76", "1029": "1nwv_gRx75wTdRpWIF1LjKp25ci3ZF5PC", "1028": "1WYmhd5m5b2ooeci36_6IU-HwTVIkhmSB", "1027": "1PHAx-uBOLtoJlW9794LJBxgPIzscv522", "1026": "1ieTkMnGN3R50m21izZblygAJvDxneZsg", "1025": "12yKJSt42xEzcL-YGTycZ4jhTVfLAFSPy", "1024": "1NksvRHIJs-8Jma562ndv5crB4TAMLsR-", "1023": "1YOITbiCElrFC3YWF0mdIov-c5pAbf2L2", "1022": "1IIXnrS3Y2dxsZYETxdYVSPQTqb4Anhc3", "1020": "1Hl0-nkHQ20voISdiBVq_DEIbZjdgSjsF", "1019": "1dNzVDyYuLFm72pJuak6CFVjpQjYFjNkH", "1092": "1778MdJjLyfxo6dqeUhIPi7iBQP33CGuw", "1091": "1nC2jlEWV7Gt9wprZNJlvrh1sm9CmUYlQ", "1090": "1U7MQl5UNufWy9xGKLFDJonZdWGksI-sE", "1089": "1KAB-ftHyCxkDp7BflwMwSwOjQX1un7gz", "1088": "1W0J-lUDcV7zrvXRRVssY5j5xg8Os3cwo", "1087": "1ZoXzDlrG3QlCdocR49hNR1KpKxGf0AfD", "1086": "1ItfKevDUzn08U-m0-XuF5OIwYw0SSghY", "1085": "1guVoTVOdPn19NlKR4KkL4bwytZuUkVtq", "1084": "12WSXC-X56z693YeNmTsDUFcP20LLKvC_", "1083": "1mBzcZiwqfHyv2kZJtP9vzH8wLCARjl5T", "1082": "1TJIbAgGYJb1QkWDLyjbzqb5xrBLhoGVm", "1081": "1pjekhqlmgG2uWyzO_KLmATsb2fTyrX2e", "1080": "1yarkZxSCtsGLFyb6lXxcD_yLOUsFPNJB", "1079": "1J7YS2TYSmFmehvZeV9MMe8dXDLm6VEUe", "1078": "1Qg3Dvc2IrYs34alCqx5M8_7h180E1mem", "1077": "17CMp4U6HnuO_-ubQclFKIfkM3xZFg42f", "1076": "1vEYCcQB819_SgNvqulJccYKE_htbij96", "1075": "1hHx8zLEMq40LFUfzKxp9UGIrRfcB8XiU", "1072": "1G3a3KhvW92brS87A88g7u6XVIJnHu94G", "1071": "1FDwJjAQZiilisoeuqJM6SSAGSRW_6PqL", "1070": "1TaXf7rvpQ0JVdfPG0Ya1jWXP-f2vWlDc", "1069": "1Wmsj-MvYfKU1EJ9nfEndfxDPUXVcXCes", "1068": "13g-O0by1DjaMXuLkBoaMXPsYdE2oWm89", "1067": "1rvb7tn3lxm1TAZ-cTZn4ZvOkj0yecH0g", "1018": "1OO7UzRrb2rXHeEiTN2DWF8M64rNYAm3q", "1066": "1PZWpWX_EOXHaUIykAyuw4mnByz_KPPFH", "1017": "1ajstm1pIClQZO0fiYuSnE7VvcWzmUp9_", "1065": "1Mq-z3sm6L0OCSdFlExH7FZsDh_ZTMQer", "1016": "1OgYiQnVMREKDauoQ2MiK4BahRCq6WuMg", "1064": "1Nynjl59zfheluzXMrdukxCdnd4xV_qXQ", "1015": "16sdsoChBVgDqKqXs2MWg_aXr4MiWzTKA", "1063": "1PFocgnjfnh8uvaCcCkCcE8GQpW6D6LV0", "1014": "18kO7FKYvgraWkiiFJrbjypl2a_Iiw58_", "1062": "1Q0mNwluhkUFf7HijC9HkhHVWRFicFHsq", "1013": "1R10DyfcR5qbl2AnA9tdSe14CUDz8xYxl", "1061": "1JxVZYOotU2wX1P5xzxXK8KhWJDRXV82S", "1060": "1Z5gyfS7THKMnM6R_Kt2hc9ng3nH_DgMF", "1012": "1TM3EgmzOyQETY3JlfZeNrdoF4otP-efl", "1011": "1RaDgc4eOqtWqCSrEXx9EVrtndb430wFl", "1059": "1ef1gQCdoFanfhom2V5mQqlhzPLVME1pH", "1010": "10KRhGLUJfkO54nyD71WT55TPqXJrimBz", "1058": "18iV-akmRTLxLJAr0zM7zudQj26v7IPg1", "1057": "1eED31vUEffmXZx7BjwlX8v1CFfC9aser", "1008": "1UtZq6KVFddFU2vh-kEvqkoUdvIoNEKq_", "1007": "1Yr1jwZyKexfcNoQXd7IxvekOii4-kqZR", "1005": "1vbXyAQjUEmYn_ib_Vq3rWo6ErwvDVveI", "1004": "1kyraOK8z6BVYl4E8oi6F9VscpGSH_yR1", "1003": "14CbDBCrO6YfuRs6HdVfBFOr2WkfRcdNB", "1002": "1FK2__U5VRZUexcywCo_53yToQQqF2sdB", "1001": "1xi3Vb-f8kZEhidQuEayuIfsqxpD-tmTb", "1000": "1fsuvpIfWtrg83y3hQJjjkMveCc_iNGZ5", "0999": "1THVoxeP2XcCHU6Li42hD4wPYawetaPDA", "0998": "1yuyhI-UAGBdJuUfUK0Pfgu2J4bI5nQ3D", "0997": "1dhyEfUJCLeplxl-Z0I6eaaJh74iGw76l", "0996": "127QJ3DIK8UTbJYd8BE5KSsJDOlk86JHh", "0994": "1NF2Cx4pu0pKsbb9ROpm3icFgsiIPHReb", "0993": "1aJqcphW-df0vyPMpb_KzayZ9pPl12YMt", "0992": "18M12ltZI64YaAyAhGu0Nc34efn7-UMqe", "0990": "1Yz3zriFVpD-ElISznG14r7kcG408kIKb", "0988": "1N9xCXWQrPJZGc6T3ZOFx7nBkgU97aMZ6", "0987": "1yTLHcxTOsX0XaIHSJ5Ioj-ghBmSS8b59", "0986": "14QeyYtc8qRX47aimTKL5lnyc70wxmcZl", "0985": "1vSUxLl-yb0l6i9YlcVBoOYaZ4zI6KaqZ", "0984": "15ipzDSqbgOf4iJEE7u32L8gT4jDygr0S", "0983": "1KkoknjOIo4IR3sEH8jfxuNXTT2U-ZSM-", "0982": "1TtDfFgUdPfeDxG34__iNzsxlC-T4Vwl6", "0981": "1JKACGfDXWzNtBaWR6OC1AnLy_Up44NZr", "0980": "1TgdH3v2jkgk-VRoZbWYBbLvi4C3ONaVJ", "0979": "1MHAJcDP5bngZRn3tRdpqXLrkTz1DnyWi", "0978": "19K0KZx3fcM0EJd1u-ZOc0G7nQRyLWZCV", "0976": "1j7WBF2LWhN8F5pAg1wAxd4SFuy1yVd5K", "0974": "1owUr-959EwA1EIosFU4Z_XDJVXJEzodT", "0973": "1BQcWUdKcRbC9PFNUTtXKQUshycGyxYQO", "0972": "1rBnzBBlncKkXtYJt9ZzdjNhIN1wIbM6w", "0971": "1iXMqz2JdYtn3yftm56CXlBuN2aDfBIHY", "0970": "1s3Tlej73CiCZQuGlHw3BJ3QKtRAPUibr", "0968": "1034T6jgxu6EfNVQeSDFT3qavfyTcEwxm", "0967": "1ekpIwaEThqhGvpTml--ortz2RpPwMJTD", "0966": "1VFjTrqscd_TNT4NnA-13BBWxtjeDpiq5", "0964": "1jGiYlo02OepwDtWe2eEhIfMDEgfBVQFp", "0963": "1QGtyembgOGaiZrPH45rBQnt8AI21cVwN", "0961": "1cAHndbxtcAbLWCW-6ZEq40-97LChAqRC", "0959": "1bA5oIepGQk1qKqsZpgSLh1ARm4Key-iA", "0958": "1NnAMFDK1ULxedMhcLpuizGqInynJ4oQ-", "0954": "1GvL8on4ut27hE8SyxQ0T7HsPIAufjQRL", "0953": "1uvNnFMuuogX0J2NKtzIMpMiBbQeiUYwy", "0949": "1kC69H4S1tGY4SgfpcwV53g8naWGsCakq", "0948": "19QDMCRtTtOyg6v5G531DL0XVAGZVWOnd", "0946": "1X0M12443TcePi6X__gNeKr00jl1EUW7I", "0942": "1MV2WFTxqUb7ZKQp559mgVQVrzQoCBkXg", "0941": "1CgJJqqDeSuE9WmIA70FWyyi4HKWmhyez", "0940": "1qfsOuNIexR4PqwZHyGx2iQg1HZYAIJFL", "0939": "18M2kN2YYanpQ8RlB-cJNoT2MeOObDCst", "0938": "1W5nJdI5YoRtTxjxcDcVQEQQXH_ZRRLsw", "0937": "1gYFr6RAdzfS0shZiKSEcQGv_d-uhYRUo", "0936": "1hEd7yuzTyqoXUr9bptcNdxfg_4AYcS8V", "0935": "1nG2VmqZvurm8dUvZXm5cqfHrgzp_ssi2", "0934": "1BKVgtWhpKpLgsbkaDktPKmjLA9pRfCKm", "0932": "11HxBQO_BKkDpKjU3VsfZJYgB7eV-npXy", "0931": "1Uxu-v2k6dAvICbIG8ZijTgSZl68piElb", "0929": "1OuiaoJ8HC98EwB5aulb8WufUJT7oJOog", "0926": "1mxGyB_s05yzuTPFZSOsNW2sNClYcObNG", "0925": "1xTw4JeHqemC5nxy4Y6o7gPn3_vESy7er", "0924": "1TDFuujgEbVWJmzQEW2j8JoZzWvgmYv8c", "0922": "1OhOw6llRnk8ETEEAhRpck5CcDwqC-opm", "0918": "1xnyuOSAPdKouJVi4UuQ-gCZD5zW7ilpm", "0915": "1k553jr72Ely4v5UIEKyjV5AestM9iQ8h", "0914": "1UTlICTj9iqtPnsSHTlaRO50v-QO60cnt", "0913": "17eKp_ZGJjNApRwTmiKCz_K0dHMUsOn1M", "0912": "1qa5GMABMuGnz7PPL7BRQ4e-l-TiGDHUq", "0911": "1Cc_6rAy7b9cgwz4S75F0R0h2IfraNuE6", "0909": "1mR9xZGOns8mQNOk3N1bGO4UDJZRO9oIw", "0906": "1oX5doXXGuX-m-NfsyvMD63oXQDpZeoxu", "0905": "1kNPoCruqS0I814bJLytot6e8j2TXT3kd", "0904": "1M3q1hGQHgarLZlo8F0BJ8stkdzk3V1kt", "0903": "1KSrKGaZbzdy3HpRyUSzfbsp_H-Q-hRo6", "1073": "1JzqxWy5hJsLc4bzMGSavnj1g_DvybkLF", "1021": "107-fzZicn8RQwNwqDsORE8PX1alfitE0", "0930": "1ZXC77B0ZIimalciRIFPoFPly2Y_LE7Ab", "0927": "1_1vQtLZd0iRUVG4knBQRQgHThHDhiypu", "0920": "1iuOXvv48YVzGivP-ity6hs2jTDPXxZ5I", "0919": "1NvR884EULy6OgvnTres1bSCjXUgw1ZBx", "0916": "1Db4j3LY-Ztz1fyYfyUAM327P4XsLwa0F", "0900": "1WIGJFxDnTvU8tChoJUzMJK464ad47nAe"};
-
-function driveSearchUrl(num) {
-  const q = encodeURIComponent(num + " -");
-  return "https://drive.google.com/drive/folders/" + DRIVE_FOLDER_ID + "?q=" + q;
-}
-
-function transcriptUrl(num) {
-  if (DRIVE_FILE_IDS[num]) {
-    return "https://drive.google.com/file/d/" + DRIVE_FILE_IDS[num] + "/view";
-  }
-  // Not yet copied to Drive folder - fall back to a folder search
-  return driveSearchUrl(num);
-}
-
-const listEl = document.getElementById('list');
-const emptyEl = document.getElementById('empty');
-const countEl = document.getElementById('count');
-const searchEl = document.getElementById('search');
-const matchedOnlyEl = document.getElementById('matchedOnly');
-const pills = document.querySelectorAll('.pill');
-
-let activeSeries = 'all';
-let matchedOnly = false;
-
-function render() {
-  const q = searchEl.value.trim().toLowerCase();
-  const filtered = DATA.filter(r => {
-    if (activeSeries !== 'all' && r.s !== activeSeries) return false;
-    if (matchedOnly && r.st !== 'Match') return false;
-    if (q && !(r.t.toLowerCase().includes(q) || r.n.includes(q))) return false;
-    return true;
-  });
-
-  countEl.textContent = filtered.length + " of " + DATA.length + " tracks";
-
-  if (filtered.length === 0) {
-    listEl.innerHTML = '';
-    emptyEl.style.display = 'block';
-    return;
-  }
-  emptyEl.style.display = 'none';
-
-  listEl.innerHTML = filtered.map(r => {
-    const tabClass = r.s.replace(' ', '');
-    const metaBits = [r.y, r.loc, r.dur].filter(Boolean).join(' · ');
-    const statusHtml = r.st === 'Match'
-      ? '<span class="status ok">Found</span>'
-      : '<span class="status no">No transcript</span>';
-    const hasFile = !!DRIVE_FILE_IDS[r.n];
-    const actionHtml = r.st === 'Match'
-      ? '<a href="' + transcriptUrl(r.n) + '" target="_blank" rel="noopener">' + (hasFile ? 'Open transcript ↗' : 'Search Drive folder ↗') + '</a>'
-      : '<span>—</span>';
-    return '<div class="row">'
-      + '<div class="tab ' + tabClass + '"></div>'
-      + '<div class="num">#' + r.n + '</div>'
-      + '<div class="title">' + escapeHtml(r.t) + '</div>'
-      + '<div class="meta' + (metaBits ? '' : ' dim') + '">' + (metaBits || '—') + '</div>'
-      + statusHtml
-      + '<div class="action">' + actionHtml + '</div>'
-      + '</div>';
-  }).join('');
-}
-
-function escapeHtml(s) {
-  return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
-}
-
-searchEl.addEventListener('input', render);
-matchedOnlyEl.addEventListener('change', e => { matchedOnly = e.target.checked; render(); });
-pills.forEach(p => p.addEventListener('click', () => {
-  pills.forEach(x => x.classList.remove('active'));
-  p.classList.add('active');
-  activeSeries = p.dataset.series;
-  render();
-}));
-
-render();
-</script>
 
 </body>
 </html>
