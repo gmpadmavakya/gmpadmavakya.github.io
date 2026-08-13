@@ -154,11 +154,44 @@
     color: var(--tan);
     letter-spacing: 0.03em;
   }
+
+  .topnav {
+    display: flex;
+    justify-content: center;
+    gap: 0.6rem;
+    padding: 0.9rem 1.5rem 0;
+    position: relative;
+  }
+  .topnav a {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.74rem;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: #C9C2B2;
+    border: 1.5px solid rgba(201,194,178,0.35);
+    padding: 0.4rem 0.9rem;
+    border-radius: 999px;
+    transition: all 0.15s ease;
+  }
+  .topnav a:hover {
+    border-color: var(--gold);
+    color: var(--paper);
+  }
+  .topnav a.active {
+    background: var(--gold);
+    border-color: var(--gold);
+    color: var(--ink);
+  }
 </style>
 </head>
 <body>
 
 <header>
+  <nav class="topnav">
+  <a href="/" class="active">Home</a>
+  <a href="/five-star-series/">Five Star Series</a>
+</nav>
   <p class="eyebrow">Guru Mukha Padma Vakya</p>
   <h1>Guru Mukha Padma Vakya</h1>
   <p class="sub">Sanga to relish the nectar instructions of<br>His Holiness Radhanath Swami Maharaja</p>
